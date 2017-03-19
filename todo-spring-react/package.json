@@ -1,0 +1,21 @@
+{
+  "name": "todo-spring-react",
+  "version": "1.0.0",
+  "description": "Laboratório Final de Fundamentos de Arquitetura de Software",
+  "repository": "https://github.com/delvana/ArquiteturaLaboratorioFinal.git",
+  "scripts": {
+    "bundle": "browserify src/main/resources/static/index.js -o src/main/resources/static/bundle.js -t [ babelify --presets [ es2015 react ] ]",
+    "watch": "watchify src/main/resources/static/index.js -o src/main/resources/static/bundle.js -t [ babelify --presets [ es2015 react ] ]"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
