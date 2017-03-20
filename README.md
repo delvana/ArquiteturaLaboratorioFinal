@@ -32,9 +32,14 @@ unificado (`bundle.js`).
 
 ## Instruções para executar a aplicação
 
-A compilação e execução da aplicação pode ser disparada pelo sistema de build gradle.
-Para isso, abra o console e entre no diretório `todo-spring-react`. Em seguida, digite o seguinte comando:
+Antes de executar, baixe o repositório do git:
 
+    git clone https://github.com/delvana/ArquiteturaLaboratorioFinal.git
+
+A compilação e execução da aplicação pode ser disparada pelo sistema de build gradle.
+Para isso, entre no diretório `ArquiteturaLaboratorioFinal/todo-spring-react` e digite o seguinte comando:
+
+    cd ArquiteturaLaboratorioFinal\todo-spring-react
     gradlew bootrun
 
 Tal comando baixará todas as bibliotecas necessárias do back-end e também do front-end (usando o NodeJs), 
