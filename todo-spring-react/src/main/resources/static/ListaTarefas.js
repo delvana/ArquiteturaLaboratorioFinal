@@ -70,27 +70,28 @@ export class ListaTarefas extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.adicionaTarefa}>
-          <h3>Tarefas</h3>
-          <table>
-            <tbody>
-              <tr>
-                <td></td>
-                <td>
+        <h3>Tarefas</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>
+                <form onSubmit={this.adicionaTarefa}>
                   <input type="text" placeholder="Descrição da tarefa" value={this.state.descricaoNovaTarefa} onChange={this.onChangeDescricao} />
-                </td>
-                <td><input type="submit" value="Adiciona Tarefa" /></td>
-              </tr>
-            {this.getTarefas().map((tarefa) => 
-              <tr key={tarefa.id}>
-                <td><input type="checkbox" checked={tarefa.concluida} onChange={this.onChangeConcluida.bind(this, tarefa.id, !tarefa.concluida)} /></td>
-                <td>{tarefa.descricao}</td>
-                <td><button onClick={this.excluiTarefa.bind(this, tarefa.id)}>Excluir</button></td>
-              </tr>
-            )}
-            </tbody>
-          </table>
-        </form>
+                  <input type="submit" value="Adiciona Tarefa" />
+                </form>
+              </td>
+              <td></td>
+            </tr>
+          {this.getTarefas().map((tarefa) => 
+            <tr key={tarefa.id}>
+              <td><input type="checkbox" checked={tarefa.concluida} onChange={this.onChangeConcluida.bind(this, tarefa.id, !tarefa.concluida)} /></td>
+              <td>{tarefa.descricao}</td>
+              <td><button onClick={this.excluiTarefa.bind(this, tarefa.id)}>Excluir</button></td>
+            </tr>
+          )}
+          </tbody>
+        </table>
         <div>
           <h4>Opções</h4>
           <div><input type="checkbox" checked={this.state.omitirConcluidas} onChange={this.onChangeOmitirConcluidas.bind(this, !this.state.omitirConcluidas)} />Não exibir tarefas concluídas</div>

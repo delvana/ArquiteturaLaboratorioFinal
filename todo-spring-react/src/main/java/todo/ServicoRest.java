@@ -1,8 +1,6 @@
 package todo;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,46 +9,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import todo.modelo.Tarefa;
+import todo.modelo.TarefaService;
 
 @RestController
 public class ServicoRest {
 
-	private int geradorId = 1;
+	private TarefaService tarefaService;
 
-	private List<Tarefa> tarefas = new ArrayList<>();
+	@Autowired
+	public ServicoRest(TarefaService tarefaService) {
+		this.tarefaService = tarefaService; 
+	}
 
 	@RequestMapping(value = "/tarefas", method = RequestMethod.GET)
-	public List<Tarefa> buscaTarefas() {
-		return tarefas;
+	public Iterable<Tarefa> buscaTarefas() {
+		return tarefaService.buscaTarefas();
 	}
 
 	@RequestMapping(value = "/tarefas", method = RequestMethod.POST)
-	public List<Tarefa> adicionaTarefa(@RequestBody Tarefa tarefa) {
-		tarefa.setId(geradorId++);
-		tarefas.add(tarefa);
-		return tarefas;
+	public Iterable<Tarefa> adicionaTarefa(@RequestBody Tarefa tarefa) {
+		tarefaService.adicionaTarefa(tarefa);
+		return buscaTarefas();
 	}
 
 	@RequestMapping(value = "/tarefas/{id}", method = RequestMethod.DELETE)
-	public List<Tarefa> adicionaTarefa(@PathVariable int id) {
-		for (int i = 0; i < tarefas.size(); i++) {
-			if (tarefas.get(i).getId() == id) {
-				tarefas.remove(i);
-				break;
-			}
-		}
-		return tarefas;
+	public Iterable<Tarefa> excluiTarefa(@PathVariable int id) {
+		tarefaService.excluiTarefa(id);
+		return buscaTarefas();
 	}
 
 	@RequestMapping(value = "/tarefas/{id}", method = RequestMethod.POST)
-	public List<Tarefa> marcaTarefaConcluida(@PathVariable int id, @RequestParam(name = "concluida", required = true) boolean concluida) {
-		for (int i = 0; i < tarefas.size(); i++) {
-			if (tarefas.get(i).getId() == id) {
-				tarefas.get(i).setConcluida(concluida);
-				break;
-			}
-		}
-		return tarefas;
+	public Iterable<Tarefa> marcaTarefaConcluida(@PathVariable int id, @RequestParam(name = "concluida", required = true) boolean concluida) {
+		tarefaService.marcaTarefaConcluida(id, concluida);
+		return buscaTarefas();
 	}
 
 }

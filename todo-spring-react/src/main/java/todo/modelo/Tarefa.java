@@ -1,24 +1,34 @@
 package todo.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Tarefa {
 
-	int id;
-	String descricao;
-	boolean concluida = false;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+
+	private String descricao;
+
+	private boolean concluida = false;
 
 	public Tarefa() {
 	}
-	
+
 	public Tarefa(int id, String descricao) {
 		this.id = id;
 		this.descricao = descricao;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
