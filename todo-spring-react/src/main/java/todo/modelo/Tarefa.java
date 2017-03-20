@@ -4,6 +4,7 @@ public class Tarefa {
 
 	int id;
 	String descricao;
+	boolean concluida = false;
 
 	public Tarefa() {
 	}
@@ -27,6 +28,14 @@ public class Tarefa {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public boolean getConcluida() {
+		return concluida;
+	}
+
+	public void setConcluida(boolean concluida) {
+		this.concluida = concluida;
 	}
 
 }

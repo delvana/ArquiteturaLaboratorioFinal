@@ -8,7 +8,11 @@ export function adicionaTarefa(tarefa) {
 }
 
 export function excluiTarefa(idTarefa) {
-  return httpDelete('tarefas/' + idTarefa);
+  return httpDelete(`tarefas/${idTarefa}`);
+}
+
+export function marcaTarefaConcluida(idTarefa, concluida) {
+  return httpPost(`tarefas/${idTarefa}?concluida=${concluida}`);
 }
 
 function httpPost(url, dados) {
@@ -18,7 +22,7 @@ function httpPost(url, dados) {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(dados)
+    body: dados ? JSON.stringify(dados) : undefined
   }).then(response => response.json());
 }
 
