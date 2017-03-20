@@ -2,10 +2,23 @@ package todo.modelo;
 
 public class Tarefa {
 
+	int id;
 	String descricao;
 
-	public Tarefa(String descricao) {
+	public Tarefa() {
+	}
+	
+	public Tarefa(int id, String descricao) {
+		this.id = id;
 		this.descricao = descricao;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getDescricao() {
