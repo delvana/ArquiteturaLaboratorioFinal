@@ -30,17 +30,30 @@ Javascript NodeJs. Nele, é utilizado um conjunto de plug-ins (browserify e babe
 unificado (`bundle.js`).
 
 
-## Instruções para executar a aplicação
+## Instruções para compilar e executar a aplicação
 
-Antes de executar, baixe o repositório do git:
+A única dependência para compilar a aplicação é ter o Java Development Kit instalado no computador.
+A compilação e execução da aplicação pode ser disparada pelo sistema de build gradle.
+
+Primeiro, baixe o repositório do git:
 
     git clone https://github.com/delvana/ArquiteturaLaboratorioFinal.git
 
-A compilação e execução da aplicação pode ser disparada pelo sistema de build gradle.
-Para isso, entre no diretório `ArquiteturaLaboratorioFinal/todo-spring-react` e digite o seguinte comando:
+Em seguida, entre no diretório `ArquiteturaLaboratorioFinal/todo-spring-react` e digite o seguinte comando:
 
     cd ArquiteturaLaboratorioFinal\todo-spring-react
     gradlew bootrun
 
 Tal comando baixará todas as bibliotecas necessárias do back-end e também do front-end (usando o NodeJs), 
 compilará a aplicação e iniciará um servidor, que poderá ser acessado no endereço `http://localhost:8080`.
+
+### Executar a aplicação diretamente to JAR
+
+Um JAR com a aplicação compilada e pronta para uso também foi disponibilizado no repositório. Para utilizá-lo,
+entre no diretório `ArquiteturaLaboratorioFinal/todo-spring-react` e digite o seguinte comando:
+
+    cd ArquiteturaLaboratorioFinal\todo-spring-react
+    java -jar todo-spring-react.jar
+
+Note que o java deve estar instalado na máquina para executar a aplicação.
+
